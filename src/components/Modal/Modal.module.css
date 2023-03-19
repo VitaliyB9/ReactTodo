@@ -1,0 +1,23 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: none; /* чтобы изначально окно не было видно */
+  background-color: rgba(0, 0, 0, 0.5); /* затемняем фон */
+}
+
+.modalContent {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  min-width: 250px;
+}
+
+.modalActive {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* выравниваем по горизонтали и вертикали */
+}

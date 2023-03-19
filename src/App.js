@@ -1,30 +1,25 @@
-import React, { useState } from "react";
-import PostForm from "./components/PostForm";
-import PostList from "./components/PostList";
+import React from "react";
 import "./todoStyle.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar/navbar";
+import About from "./pages/About";
+import Posts from "./pages/Posts";
 
 function App() {
-  const [posts, setPosts] = useState([
-    { id: 1, name: "First task", description: "Doing something" },
-  ]);
-
-  const createPost = (newPost) => {
-    setPosts([...posts, newPost]);
-  };
-
-  const removePost = (post) => {
-    setPosts(posts.filter((p) => p.id !== post.id));
-  };
-
   return (
-    <div className="App">
-      <PostForm create={createPost} post={{}} />
-      {posts.length !== 0 ? (
-        <PostList remove={removePost} posts={posts} title="TodoList" />
-      ) : (
-        <h2>Good work, you doing all tasks!</h2>
-      )}
-    </div>
+    <BrowserRouter>
+      <Navbar />
+      <Routes>
+        <Route
+          path='/about'
+          element={<About />}
+        />
+        <Route
+          path='/posts'
+          element={<Posts />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

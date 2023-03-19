@@ -6,24 +6,62 @@
 
 #root {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App {
   width: 80%;
 }
 
+.navbar {
+  height: 50px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  background-color: rgb(142, 16, 16);
+}
+
+.navbarLinks {
+  margin-left: auto;
+}
 .post {
   display: flex;
-  border: 2px solid red;
   padding: 5px 10px;
   margin-top: 10px;
+  border: 2px solid red;
   justify-content: space-between;
   align-items: center;
 }
 
 h2 {
-	display: flex;
-	justify-content: center;
-	margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+hr {
+  margin: 15px 0;
+}
+
+.pageWrapper {
+  margin: 10px 0 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  padding: 5px 15px;
+  margin-top: 5px;
+  margin-left: 2px;
+  border: 1px solid red;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.pageCurrent {
+  border: 3px solid rgb(236, 6, 6);
+  font-weight: bold;
 }

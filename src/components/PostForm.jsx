@@ -2,37 +2,37 @@ import React, { useState } from "react";
 import ButtonPost from "./Buttons/ButtonPost";
 import InputPost from "./Inputs/InputPost";
 
-const PostForm = ({ create, post: { name, description, id } }) => {
+const PostForm = ({ create, post: { title, body, id } }) => {
   const [post, setPost] = useState({
-    name: "",
-    description: "",
+    title: "",
+    body: "",
   });
 
   const createPost = (elem) => {
-    elem.preventDefault();
+    elem.preventDefault(); // предотвращаем дефолтное поведение браузера
     const newPost = {
       ...post,
-      id: Date.now(),
+      id: Date.now(), // дату получаем в милисекундах, в рамках нашего прилож будет уникальностьы
     };
     create(newPost);
-    setPost({ name: "", description: "" });
+    setPost({ title: "", body: "" }); // очистка полей после ввода
   };
 
   return (
     <div>
       <InputPost
-        value={post.name}
-        onChange={(elem) => setPost({ ...post, name: elem.target.value })}
+        value={post.title} // делаем двухстронее свзяывание и в value передаем состояние name через props
+        onChange={(elem) => setPost({ ...post, title: elem.target.value })} // вызываем функцию setPost в которую разворачиваем все посты, но перезатираем нужное поле этого инпута
         type="text"
-        placeholder="Name post"
+        placeholder="Title post"
       />
       <InputPost
-        value={post.description}
+        value={post.body}
         onChange={(elem) =>
-          setPost({ ...post, description: elem.target.value })
+          setPost({ ...post, body: elem.target.value })
         }
         type="text"
-        placeholder="Description post"
+        placeholder="Body post"
       />
       <ButtonPost onClick={createPost}>AddPost</ButtonPost>
     </div>

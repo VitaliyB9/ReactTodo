@@ -1,16 +1,21 @@
 import React from "react";
 import PostElement from "./PostElement";
 
-const PostList = ({ posts, title, remove }) => {
-  return (
-    <div>
-      <h2>{title}</h2>
-      {posts.map((post, index) => (
-        <PostElement
-          number={index + 1}
+const PostList = ({ posts, title, remove }) => { // если знаем, что пропсы это объект, то делаем деструктуризацию
+  if(!posts.length) { // проверяем что длина массива не равна 0 (массив пустой)
+    return (
+      <h2>No one task</h2> // если массив пустой создаем блок в котором пишем что-то
+    )
+  }
+  return ( 
+    <div> {/* должен быть один корневой эл-т */}
+      <h2>{title}</h2> {/* делаем динамический заголовок  */}
+      {posts.map((post, index) => ( // получаем новый массив преобразовав все эл-ты
+        <PostElement // как пропсы передаем св-ва
+          number={index + 1} // начинаем счет с 1, а не 0
           remove={remove}
           post={post}
-          key={post.id}
+          key={post.id} // ключ должен хранить уникальное значени (для списка всегда должен быть ключ), ключи позволяют алгоритмам реакта наиболее эффективно делать рендеринг
         />
       ))}
     </div>
